@@ -9,6 +9,8 @@
 			<el-button type="primary" @click="sendEmail">
 				{{ t('发送邮件') }}
 			</el-button>
+			<email-test />
+
 			<cl-flex1 />
 			<!-- 搜索 -->
 			<cl-search ref="Search" />
@@ -43,6 +45,7 @@ import { useI18n } from 'vue-i18n';
 import { useCool } from '/@/cool';
 import { reactive } from 'vue';
 import { ElMessage, ElMessageBox } from 'element-plus';
+import EmailTest from '../components/email-test.vue';
 
 const { t } = useI18n();
 const { service } = useCool();
@@ -76,7 +79,7 @@ const Table = useTable({
 		},
 		{
 			label: t('收件人'),
-			prop: 'to',
+			prop: 'toEmail',
 			minWidth: 200
 		},
 		{

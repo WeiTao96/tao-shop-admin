@@ -1,15 +1,6 @@
 <template>
-	<div class="email-test">
-		<el-card>
-			<template #header>
-				<div class="card-header">
-					<span>{{ t('邮件测试') }}</span>
-				</div>
-			</template>
-
-			<cl-form ref="TestForm" />
-		</el-card>
-	</div>
+	<el-button @click="sendTestEmail">发送测试邮件</el-button>
+	<cl-form ref="TestForm" />
 </template>
 
 <script lang="ts" setup>
@@ -20,7 +11,6 @@ defineOptions({
 import { useForm } from '@cool-vue/crud';
 import { useI18n } from 'vue-i18n';
 import { useCool } from '/@/cool';
-import { onMounted } from 'vue';
 import { ElMessage } from 'element-plus';
 
 const { t } = useI18n();
@@ -28,12 +18,11 @@ const { service } = useCool();
 
 // 测试表单
 const TestForm = useForm();
-
-onMounted(() => {
+const sendTestEmail = () => {
 	TestForm.value?.open({
-		title: '',
+		title: t('发送测试邮件'),
 		op: {
-			saveButtonText: t('发送测试邮件')
+			saveButtonText: t('发送')
 		},
 		items: [
 			{
@@ -42,7 +31,7 @@ onMounted(() => {
 				component: {
 					name: 'el-input',
 					props: {
-						placeholder: '请输入测试邮箱地址'
+						placeholder: t('请输入测试邮箱地址')
 					}
 				},
 				required: true
@@ -53,10 +42,10 @@ onMounted(() => {
 				component: {
 					name: 'el-input',
 					props: {
-						placeholder: '测试邮件主题'
+						placeholder: t('测试邮件主题')
 					}
 				},
-				value: '邮件服务测试',
+				value: t('邮件服务测试'),
 				required: true
 			},
 			{
@@ -67,15 +56,17 @@ onMounted(() => {
 					props: {
 						type: 'textarea',
 						rows: 8,
-						placeholder: '测试邮件内容'
+						placeholder: t('测试邮件内容')
 					}
 				},
-				value: '这是一封测试邮件，用于验证邮件服务是否正常工作。\n\n如果您收到这封邮件，说明邮件服务配置正确。',
+				value: t(
+					'这是一封测试邮件，用于验证邮件服务是否正常工作。\n\n如果您收到这封邮件，说明邮件服务配置正确。'
+				),
 				required: true
 			}
 		],
 		on: {
-			submit: (data, { done, close }) => {
+			submit(data, { done, close }) {
 				service.email.email
 					.test(data)
 					.then(() => {
@@ -89,17 +80,7 @@ onMounted(() => {
 			}
 		}
 	});
-});
+};
 </script>
 
-<style scoped>
-.email-test {
-	padding: 20px;
-}
-
-.card-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-</style>
+<style scoped></style>

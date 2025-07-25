@@ -706,6 +706,78 @@ declare namespace Eps {
 		[key: string]: any;
 	}
 
+	interface MinioFileEntity {
+		/**
+		 * ID
+		 */
+		id?: number;
+
+		/**
+		 * 文件名
+		 */
+		filename?: string;
+
+		/**
+		 * 原始文件名
+		 */
+		originalName?: string;
+
+		/**
+		 * 存储键值
+		 */
+		key?: string;
+
+		/**
+		 * 文件URL
+		 */
+		url?: string;
+
+		/**
+		 * 文件大小
+		 */
+		size?: BigInt;
+
+		/**
+		 * MIME类型
+		 */
+		mimetype?: string;
+
+		/**
+		 * ETag
+		 */
+		etag?: string;
+
+		/**
+		 * 存储桶名称
+		 */
+		bucket?: string;
+
+		/**
+		 * 文件描述
+		 */
+		description?: string;
+
+		/**
+		 * 文件状态：1-正常 0-已删除
+		 */
+		status?: smallint;
+
+		/**
+		 * 创建时间
+		 */
+		createTime?: timestamp;
+
+		/**
+		 * 更新时间
+		 */
+		updateTime?: timestamp;
+
+		/**
+		 * 任意键值
+		 */
+		[key: string]: any;
+	}
+
 	interface PluginInfoEntity {
 		/**
 		 * ID
@@ -1243,6 +1315,11 @@ declare namespace Eps {
 	interface EmailEmailTemplatePageResponse {
 		pagination: PagePagination;
 		list: EmailTemplateEntity[];
+	}
+
+	interface MinioFilePageResponse {
+		pagination: PagePagination;
+		list: MinioFileEntity[];
 	}
 
 	interface PluginInfoPageResponse {
@@ -2127,6 +2204,134 @@ declare namespace Eps {
 		request: Request;
 	}
 
+	interface MinioFile {
+		/**
+		 * 根据key上传文件
+		 */
+		uploadWithKey(data?: any): Promise<any>;
+
+		/**
+		 * 下载并上传文件
+		 */
+		downAndUpload(data?: any): Promise<any>;
+
+		/**
+		 * 获取预签名URL
+		 */
+		presignedUrl(data?: any): Promise<any>;
+
+		/**
+		 * 创建存储桶
+		 */
+		createBucket(data?: any): Promise<any>;
+
+		/**
+		 * 列出存储桶中的对象
+		 */
+		listObjects(data?: any): Promise<any>;
+
+		/**
+		 * 获取文件信息
+		 */
+		fileInfo(data?: any): Promise<any>;
+
+		/**
+		 * MinIO文件上传
+		 */
+		upload(data?: any): Promise<any>;
+
+		/**
+		 * 检查文件是否存在
+		 */
+		exists(data?: any): Promise<any>;
+
+		/**
+		 * 获取MinIO配置信息
+		 */
+		config(data?: any): Promise<any>;
+
+		/**
+		 * 删除
+		 */
+		delete(data?: any): Promise<any>;
+
+		/**
+		 * 修改
+		 */
+		update(data?: any): Promise<any>;
+
+		/**
+		 * 获取文件统计信息
+		 */
+		stats(data?: any): Promise<any>;
+
+		/**
+		 * 单个信息
+		 */
+		info(data?: any): Promise<MinioFileEntity>;
+
+		/**
+		 * 列表查询
+		 */
+		list(data?: any): Promise<MinioFileEntity[]>;
+
+		/**
+		 * 分页查询
+		 */
+		page(data?: any): Promise<MinioFilePageResponse>;
+
+		/**
+		 * 新增
+		 */
+		add(data?: any): Promise<any>;
+
+		/**
+		 * 权限标识
+		 */
+		permission: {
+			uploadWithKey: string;
+			downAndUpload: string;
+			presignedUrl: string;
+			createBucket: string;
+			listObjects: string;
+			fileInfo: string;
+			upload: string;
+			exists: string;
+			config: string;
+			delete: string;
+			update: string;
+			stats: string;
+			info: string;
+			list: string;
+			page: string;
+			add: string;
+		};
+
+		/**
+		 * 权限状态
+		 */
+		_permission: {
+			uploadWithKey: boolean;
+			downAndUpload: boolean;
+			presignedUrl: boolean;
+			createBucket: boolean;
+			listObjects: boolean;
+			fileInfo: boolean;
+			upload: boolean;
+			exists: boolean;
+			config: boolean;
+			delete: boolean;
+			update: boolean;
+			stats: boolean;
+			info: boolean;
+			list: boolean;
+			page: boolean;
+			add: boolean;
+		};
+
+		request: Request;
+	}
+
 	interface PluginInfo {
 		/**
 		 * 安装插件
@@ -2544,8 +2749,6 @@ declare namespace Eps {
 
 	type Request = (options: RequestOptions) => Promise<any>;
 
-	type DictKey = "brand" | "occupation";
-
 	type Service = {
 		request: Request;
 
@@ -2565,6 +2768,7 @@ declare namespace Eps {
 		demo: { goods: DemoGoods; tenant: DemoTenant };
 		dict: { info: DictInfo; type: DictType };
 		email: { email: EmailEmail; emailTemplate: EmailEmailTemplate };
+		minio: { file: MinioFile };
 		plugin: { info: PluginInfo };
 		recycle: { data: RecycleData };
 		space: { info: SpaceInfo; type: SpaceType };
