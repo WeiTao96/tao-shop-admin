@@ -502,6 +502,210 @@ declare namespace Eps {
 		[key: string]: any;
 	}
 
+	interface EmailSendLogEntity {
+		/**
+		 * ID
+		 */
+		id?: number;
+
+		/**
+		 * 发件人邮箱
+		 */
+		fromEmail?: string;
+
+		/**
+		 * 发件人名称
+		 */
+		fromName?: string;
+
+		/**
+		 * 收件人邮箱
+		 */
+		toEmail?: string;
+
+		/**
+		 * 收件人名称
+		 */
+		toName?: string;
+
+		/**
+		 * 抄送邮箱
+		 */
+		ccEmail?: string;
+
+		/**
+		 * 密送邮箱
+		 */
+		bccEmail?: string;
+
+		/**
+		 * 邮件主题
+		 */
+		subject?: string;
+
+		/**
+		 * 邮件内容
+		 */
+		content?: string;
+
+		/**
+		 * 邮件类型
+		 */
+		contentType?: smallint;
+
+		/**
+		 * 发送状态
+		 */
+		status?: smallint;
+
+		/**
+		 * 发送时间
+		 */
+		sendTime?: timestamp;
+
+		/**
+		 * 失败原因
+		 */
+		failReason?: string;
+
+		/**
+		 * 重试次数
+		 */
+		retryCount?: number;
+
+		/**
+		 * 邮件模板ID
+		 */
+		templateId?: BigInt;
+
+		/**
+		 * 模板参数
+		 */
+		templateParams?: string;
+
+		/**
+		 * 附件信息
+		 */
+		attachments?: string;
+
+		/**
+		 * 优先级
+		 */
+		priority?: smallint;
+
+		/**
+		 * 来源模块
+		 */
+		sourceModule?: string;
+
+		/**
+		 * 业务ID
+		 */
+		businessId?: BigInt;
+
+		/**
+		 * 邮件服务商
+		 */
+		provider?: string;
+
+		/**
+		 * 外部消息ID
+		 */
+		externalId?: string;
+
+		/**
+		 * 创建时间
+		 */
+		createTime?: string;
+
+		/**
+		 * 更新时间
+		 */
+		updateTime?: string;
+
+		/**
+		 * 任意键值
+		 */
+		[key: string]: any;
+	}
+
+	interface EmailTemplateEntity {
+		/**
+		 * ID
+		 */
+		id?: number;
+
+		/**
+		 * 模板名称
+		 */
+		name?: string;
+
+		/**
+		 * 模板编码
+		 */
+		code?: string;
+
+		/**
+		 * 邮件主题
+		 */
+		subject?: string;
+
+		/**
+		 * 邮件内容
+		 */
+		content?: string;
+
+		/**
+		 * 内容类型
+		 */
+		contentType?: smallint;
+
+		/**
+		 * 模板变量说明
+		 */
+		variables?: string;
+
+		/**
+		 * 模板分类
+		 */
+		category?: string;
+
+		/**
+		 * 状态
+		 */
+		status?: smallint;
+
+		/**
+		 * 创建人
+		 */
+		createBy?: BigInt;
+
+		/**
+		 * 更新人
+		 */
+		updateBy?: BigInt;
+
+		/**
+		 * 备注
+		 */
+		remark?: string;
+
+		/**
+		 * 创建时间
+		 */
+		createTime?: string;
+
+		/**
+		 * 更新时间
+		 */
+		updateTime?: string;
+
+		/**
+		 * 任意键值
+		 */
+		[key: string]: any;
+	}
+
 	interface PluginInfoEntity {
 		/**
 		 * ID
@@ -961,26 +1165,6 @@ declare namespace Eps {
 		description?: string;
 
 		/**
-		 * 生日
-		 */
-		birthday?: string;
-
-		/**
-		 * 省
-		 */
-		province?: string;
-
-		/**
-		 * 市
-		 */
-		city?: string;
-
-		/**
-		 * 区
-		 */
-		district?: string;
-
-		/**
 		 * 创建时间
 		 */
 		createTime?: string;
@@ -1049,6 +1233,16 @@ declare namespace Eps {
 	interface DictTypePageResponse {
 		pagination: PagePagination;
 		list: DictTypeEntity[];
+	}
+
+	interface EmailEmailPageResponse {
+		pagination: PagePagination;
+		list: EmailSendLogEntity[];
+	}
+
+	interface EmailEmailTemplatePageResponse {
+		pagination: PagePagination;
+		list: EmailTemplateEntity[];
 	}
 
 	interface PluginInfoPageResponse {
@@ -1789,6 +1983,150 @@ declare namespace Eps {
 		request: Request;
 	}
 
+	interface EmailEmail {
+		/**
+		 * sendTemplate
+		 */
+		sendTemplate(data?: any): Promise<any>;
+
+		/**
+		 * retry
+		 */
+		retry(data?: any): Promise<any>;
+
+		/**
+		 * send
+		 */
+		send(data?: any): Promise<any>;
+
+		/**
+		 * logs
+		 */
+		logs(data?: any): Promise<any>;
+
+		/**
+		 * test
+		 */
+		test(data?: any): Promise<any>;
+
+		/**
+		 * 单个信息
+		 */
+		info(data?: any): Promise<EmailSendLogEntity>;
+
+		/**
+		 * 列表查询
+		 */
+		list(data?: any): Promise<EmailSendLogEntity[]>;
+
+		/**
+		 * 分页查询
+		 */
+		page(data?: any): Promise<EmailEmailPageResponse>;
+
+		/**
+		 * 权限标识
+		 */
+		permission: {
+			sendTemplate: string;
+			retry: string;
+			send: string;
+			logs: string;
+			test: string;
+			info: string;
+			list: string;
+			page: string;
+		};
+
+		/**
+		 * 权限状态
+		 */
+		_permission: {
+			sendTemplate: boolean;
+			retry: boolean;
+			send: boolean;
+			logs: boolean;
+			test: boolean;
+			info: boolean;
+			list: boolean;
+			page: boolean;
+		};
+
+		request: Request;
+	}
+
+	interface EmailEmailTemplate {
+		/**
+		 * preview
+		 */
+		preview(data?: any): Promise<any>;
+
+		/**
+		 * create
+		 */
+		create(data?: any): Promise<any>;
+
+		/**
+		 * update
+		 */
+		update(data?: any): Promise<any>;
+
+		/**
+		 * delete
+		 */
+		delete(data?: any): Promise<any>;
+
+		/**
+		 * list
+		 */
+		list(data?: any): Promise<EmailTemplateEntity[]>;
+
+		/**
+		 * info
+		 */
+		info(data?: any): Promise<EmailTemplateEntity>;
+
+		/**
+		 * 分页查询
+		 */
+		page(data?: any): Promise<EmailEmailTemplatePageResponse>;
+
+		/**
+		 * 新增
+		 */
+		add(data?: any): Promise<any>;
+
+		/**
+		 * 权限标识
+		 */
+		permission: {
+			preview: string;
+			create: string;
+			update: string;
+			delete: string;
+			list: string;
+			info: string;
+			page: string;
+			add: string;
+		};
+
+		/**
+		 * 权限状态
+		 */
+		_permission: {
+			preview: boolean;
+			create: boolean;
+			update: boolean;
+			delete: boolean;
+			list: boolean;
+			info: boolean;
+			page: boolean;
+			add: boolean;
+		};
+
+		request: Request;
+	}
+
 	interface PluginInfo {
 		/**
 		 * 安装插件
@@ -2226,6 +2564,7 @@ declare namespace Eps {
 		};
 		demo: { goods: DemoGoods; tenant: DemoTenant };
 		dict: { info: DictInfo; type: DictType };
+		email: { email: EmailEmail; emailTemplate: EmailEmailTemplate };
 		plugin: { info: PluginInfo };
 		recycle: { data: RecycleData };
 		space: { info: SpaceInfo; type: SpaceType };
