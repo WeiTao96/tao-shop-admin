@@ -706,78 +706,6 @@ declare namespace Eps {
 		[key: string]: any;
 	}
 
-	interface MinioFileEntity {
-		/**
-		 * ID
-		 */
-		id?: number;
-
-		/**
-		 * 文件名
-		 */
-		filename?: string;
-
-		/**
-		 * 原始文件名
-		 */
-		originalName?: string;
-
-		/**
-		 * 存储键值
-		 */
-		key?: string;
-
-		/**
-		 * 文件URL
-		 */
-		url?: string;
-
-		/**
-		 * 文件大小
-		 */
-		size?: BigInt;
-
-		/**
-		 * MIME类型
-		 */
-		mimetype?: string;
-
-		/**
-		 * ETag
-		 */
-		etag?: string;
-
-		/**
-		 * 存储桶名称
-		 */
-		bucket?: string;
-
-		/**
-		 * 文件描述
-		 */
-		description?: string;
-
-		/**
-		 * 文件状态：1-正常 0-已删除
-		 */
-		status?: smallint;
-
-		/**
-		 * 创建时间
-		 */
-		createTime?: timestamp;
-
-		/**
-		 * 更新时间
-		 */
-		updateTime?: timestamp;
-
-		/**
-		 * 任意键值
-		 */
-		[key: string]: any;
-	}
-
 	interface PluginInfoEntity {
 		/**
 		 * ID
@@ -848,6 +776,307 @@ declare namespace Eps {
 		 * 配置
 		 */
 		config?: any;
+
+		/**
+		 * 创建时间
+		 */
+		createTime?: string;
+
+		/**
+		 * 更新时间
+		 */
+		updateTime?: string;
+
+		/**
+		 * 任意键值
+		 */
+		[key: string]: any;
+	}
+
+	interface ProductCategoryEntity {
+		/**
+		 * ID
+		 */
+		id?: number;
+
+		/**
+		 * 分类名称
+		 */
+		name?: string;
+
+		/**
+		 * 分类图标
+		 */
+		icon?: string;
+
+		/**
+		 * 分类图片
+		 */
+		image?: string;
+
+		/**
+		 * 排序
+		 */
+		sort?: number;
+
+		/**
+		 * 状态 0:禁用 1:启用
+		 */
+		status?: number;
+
+		/**
+		 * 分类描述
+		 */
+		description?: string;
+
+		/**
+		 * 分类层级
+		 */
+		level?: number;
+
+		/**
+		 * 父级ID
+		 */
+		parentId?: number;
+
+		/**
+		 * ID
+		 */
+		parent?: number;
+
+		/**
+		 * 创建时间
+		 */
+		createTime?: timestamp;
+
+		/**
+		 * 更新时间
+		 */
+		updateTime?: timestamp;
+
+		/**
+		 * 任意键值
+		 */
+		[key: string]: any;
+	}
+
+	interface ProductInfoEntity {
+		/**
+		 * ID
+		 */
+		id?: number;
+
+		/**
+		 * 商品名称
+		 */
+		name?: string;
+
+		/**
+		 * 商品编码
+		 */
+		code?: string;
+
+		/**
+		 * 商品简介
+		 */
+		summary?: string;
+
+		/**
+		 * 商品详情
+		 */
+		detail?: string;
+
+		/**
+		 * 商品主图
+		 */
+		mainImage?: string;
+
+		/**
+		 * 商品轮播图
+		 */
+		images?: string[];
+
+		/**
+		 * 商品视频
+		 */
+		video?: string;
+
+		/**
+		 * 原价
+		 */
+		originalPrice?: number;
+
+		/**
+		 * 现价
+		 */
+		price?: number;
+
+		/**
+		 * 库存
+		 */
+		stock?: number;
+
+		/**
+		 * 销量
+		 */
+		sales?: number;
+
+		/**
+		 * 重量(g)
+		 */
+		weight?: number;
+
+		/**
+		 * 体积(cm³)
+		 */
+		volume?: number;
+
+		/**
+		 * 是否虚拟商品
+		 */
+		isVirtual?: boolean;
+
+		/**
+		 * 状态
+		 */
+		status?: number;
+
+		/**
+		 * 排序
+		 */
+		sort?: number;
+
+		/**
+		 * 是否推荐
+		 */
+		isRecommend?: boolean;
+
+		/**
+		 * 是否热门
+		 */
+		isHot?: boolean;
+
+		/**
+		 * 是否新品
+		 */
+		isNew?: boolean;
+
+		/**
+		 * 分类ID
+		 */
+		categoryId?: number;
+
+		/**
+		 * 商品标签
+		 */
+		tags?: string[];
+
+		/**
+		 * 商品属性JSON
+		 */
+		attributes?: string;
+
+		/**
+		 * SEO标题
+		 */
+		seoTitle?: string;
+
+		/**
+		 * SEO关键词
+		 */
+		seoKeywords?: string;
+
+		/**
+		 * SEO描述
+		 */
+		seoDescription?: string;
+
+		/**
+		 * 创建时间
+		 */
+		createTime?: string;
+
+		/**
+		 * 更新时间
+		 */
+		updateTime?: string;
+
+		/**
+		 * 任意键值
+		 */
+		[key: string]: any;
+	}
+
+	interface ProductSkuEntity {
+		/**
+		 * ID
+		 */
+		id?: number;
+
+		/**
+		 * 商品ID
+		 */
+		productId?: number;
+
+		/**
+		 * SKU编码
+		 */
+		skuCode?: string;
+
+		/**
+		 * 规格名称
+		 */
+		name?: string;
+
+		/**
+		 * 规格图片
+		 */
+		image?: string;
+
+		/**
+		 * 原价
+		 */
+		originalPrice?: number;
+
+		/**
+		 * 现价
+		 */
+		price?: number;
+
+		/**
+		 * 库存
+		 */
+		stock?: number;
+
+		/**
+		 * 销量
+		 */
+		sales?: number;
+
+		/**
+		 * 重量(g)
+		 */
+		weight?: number;
+
+		/**
+		 * 体积(cm³)
+		 */
+		volume?: number;
+
+		/**
+		 * 状态
+		 */
+		status?: number;
+
+		/**
+		 * 规格属性JSON
+		 */
+		attributes?: string;
+
+		/**
+		 * 排序
+		 */
+		sort?: number;
 
 		/**
 		 * 创建时间
@@ -1317,14 +1546,24 @@ declare namespace Eps {
 		list: EmailTemplateEntity[];
 	}
 
-	interface MinioFilePageResponse {
-		pagination: PagePagination;
-		list: MinioFileEntity[];
-	}
-
 	interface PluginInfoPageResponse {
 		pagination: PagePagination;
 		list: PluginInfoEntity[];
+	}
+
+	interface ProductCategoryPageResponse {
+		pagination: PagePagination;
+		list: ProductCategoryEntity[];
+	}
+
+	interface ProductInfoPageResponse {
+		pagination: PagePagination;
+		list: ProductInfoEntity[];
+	}
+
+	interface ProductSkuPageResponse {
+		pagination: PagePagination;
+		list: ProductSkuEntity[];
 	}
 
 	interface RecycleDataPageResponse {
@@ -2204,134 +2443,6 @@ declare namespace Eps {
 		request: Request;
 	}
 
-	interface MinioFile {
-		/**
-		 * 根据key上传文件
-		 */
-		uploadWithKey(data?: any): Promise<any>;
-
-		/**
-		 * 下载并上传文件
-		 */
-		downAndUpload(data?: any): Promise<any>;
-
-		/**
-		 * 获取预签名URL
-		 */
-		presignedUrl(data?: any): Promise<any>;
-
-		/**
-		 * 创建存储桶
-		 */
-		createBucket(data?: any): Promise<any>;
-
-		/**
-		 * 列出存储桶中的对象
-		 */
-		listObjects(data?: any): Promise<any>;
-
-		/**
-		 * 获取文件信息
-		 */
-		fileInfo(data?: any): Promise<any>;
-
-		/**
-		 * MinIO文件上传
-		 */
-		upload(data?: any): Promise<any>;
-
-		/**
-		 * 检查文件是否存在
-		 */
-		exists(data?: any): Promise<any>;
-
-		/**
-		 * 获取MinIO配置信息
-		 */
-		config(data?: any): Promise<any>;
-
-		/**
-		 * 删除
-		 */
-		delete(data?: any): Promise<any>;
-
-		/**
-		 * 修改
-		 */
-		update(data?: any): Promise<any>;
-
-		/**
-		 * 获取文件统计信息
-		 */
-		stats(data?: any): Promise<any>;
-
-		/**
-		 * 单个信息
-		 */
-		info(data?: any): Promise<MinioFileEntity>;
-
-		/**
-		 * 列表查询
-		 */
-		list(data?: any): Promise<MinioFileEntity[]>;
-
-		/**
-		 * 分页查询
-		 */
-		page(data?: any): Promise<MinioFilePageResponse>;
-
-		/**
-		 * 新增
-		 */
-		add(data?: any): Promise<any>;
-
-		/**
-		 * 权限标识
-		 */
-		permission: {
-			uploadWithKey: string;
-			downAndUpload: string;
-			presignedUrl: string;
-			createBucket: string;
-			listObjects: string;
-			fileInfo: string;
-			upload: string;
-			exists: string;
-			config: string;
-			delete: string;
-			update: string;
-			stats: string;
-			info: string;
-			list: string;
-			page: string;
-			add: string;
-		};
-
-		/**
-		 * 权限状态
-		 */
-		_permission: {
-			uploadWithKey: boolean;
-			downAndUpload: boolean;
-			presignedUrl: boolean;
-			createBucket: boolean;
-			listObjects: boolean;
-			fileInfo: boolean;
-			upload: boolean;
-			exists: boolean;
-			config: boolean;
-			delete: boolean;
-			update: boolean;
-			stats: boolean;
-			info: boolean;
-			list: boolean;
-			page: boolean;
-			add: boolean;
-		};
-
-		request: Request;
-	}
-
 	interface PluginInfo {
 		/**
 		 * 安装插件
@@ -2388,6 +2499,306 @@ declare namespace Eps {
 			install: boolean;
 			delete: boolean;
 			update: boolean;
+			info: boolean;
+			list: boolean;
+			page: boolean;
+			add: boolean;
+		};
+
+		request: Request;
+	}
+
+	interface ProductCategory {
+		/**
+		 * 批量更新状态
+		 */
+		updateStatus(data?: any): Promise<any>;
+
+		/**
+		 * 获取子分类
+		 */
+		children(data?: any): Promise<any>;
+
+		/**
+		 * 更新分类
+		 */
+		update(data?: any): Promise<any>;
+
+		/**
+		 * 删除分类
+		 */
+		delete(data?: any): Promise<any>;
+
+		/**
+		 * 获取分类树
+		 */
+		tree(data?: any): Promise<any>;
+
+		/**
+		 * 获取分类路径
+		 */
+		path(data?: any): Promise<any>;
+
+		/**
+		 * 单个信息
+		 */
+		info(data?: any): Promise<ProductCategoryEntity>;
+
+		/**
+		 * 列表查询
+		 */
+		list(data?: any): Promise<ProductCategoryEntity[]>;
+
+		/**
+		 * 分页查询
+		 */
+		page(data?: any): Promise<ProductCategoryPageResponse>;
+
+		/**
+		 * 新增分类
+		 */
+		add(data?: any): Promise<any>;
+
+		/**
+		 * 权限标识
+		 */
+		permission: {
+			updateStatus: string;
+			children: string;
+			update: string;
+			delete: string;
+			tree: string;
+			path: string;
+			info: string;
+			list: string;
+			page: string;
+			add: string;
+		};
+
+		/**
+		 * 权限状态
+		 */
+		_permission: {
+			updateStatus: boolean;
+			children: boolean;
+			update: boolean;
+			delete: boolean;
+			tree: boolean;
+			path: boolean;
+			info: boolean;
+			list: boolean;
+			page: boolean;
+			add: boolean;
+		};
+
+		request: Request;
+	}
+
+	interface ProductInfo {
+		/**
+		 * 批量更新推荐状态
+		 */
+		updateRecommend(data?: any): Promise<any>;
+
+		/**
+		 * 批量更新状态
+		 */
+		updateStatus(data?: any): Promise<any>;
+
+		/**
+		 * 获取推荐商品
+		 */
+		recommend(data?: any): Promise<any>;
+
+		/**
+		 * 获取商品详情（包含SKU）
+		 */
+		detail(data?: any): Promise<any>;
+
+		/**
+		 * 更新商品
+		 */
+		update(data?: any): Promise<any>;
+
+		/**
+		 * 搜索商品
+		 */
+		search(data?: any): Promise<any>;
+
+		/**
+		 * 删除商品
+		 */
+		delete(data?: any): Promise<any>;
+
+		/**
+		 * 单个信息
+		 */
+		info(data?: any): Promise<ProductInfoEntity>;
+
+		/**
+		 * 列表查询
+		 */
+		list(data?: any): Promise<ProductInfoEntity[]>;
+
+		/**
+		 * 分页查询
+		 */
+		page(data?: any): Promise<ProductInfoPageResponse>;
+
+		/**
+		 * 新增商品
+		 */
+		add(data?: any): Promise<any>;
+
+		/**
+		 * 获取热门商品
+		 */
+		hot(data?: any): Promise<any>;
+
+		/**
+		 * 获取新品
+		 */
+		new (data?: any): Promise<any>;
+
+		/**
+		 * 权限标识
+		 */
+		permission: {
+			updateRecommend: string;
+			updateStatus: string;
+			recommend: string;
+			detail: string;
+			update: string;
+			search: string;
+			delete: string;
+			info: string;
+			list: string;
+			page: string;
+			add: string;
+			hot: string;
+			new: string;
+		};
+
+		/**
+		 * 权限状态
+		 */
+		_permission: {
+			updateRecommend: boolean;
+			updateStatus: boolean;
+			recommend: boolean;
+			detail: boolean;
+			update: boolean;
+			search: boolean;
+			delete: boolean;
+			info: boolean;
+			list: boolean;
+			page: boolean;
+			add: boolean;
+			hot: boolean;
+			new: boolean;
+		};
+
+		request: Request;
+	}
+
+	interface ProductSku {
+		/**
+		 * 批量更新状态
+		 */
+		updateStatus(data?: any): Promise<any>;
+
+		/**
+		 * 更新库存
+		 */
+		updateStock(data?: any): Promise<any>;
+
+		/**
+		 * 检查库存
+		 */
+		checkStock(data?: any): Promise<any>;
+
+		/**
+		 * 批量新增SKU
+		 */
+		batchAdd(data?: any): Promise<any>;
+
+		/**
+		 * 根据商品ID获取SKU列表
+		 */
+		product(data?: any): Promise<any>;
+
+		/**
+		 * 获取有库存的SKU
+		 */
+		inStock(data?: any): Promise<any>;
+
+		/**
+		 * 获取SKU详情
+		 */
+		detail(data?: any): Promise<any>;
+
+		/**
+		 * 更新SKU
+		 */
+		update(data?: any): Promise<any>;
+
+		/**
+		 * 删除
+		 */
+		delete(data?: any): Promise<any>;
+
+		/**
+		 * 单个信息
+		 */
+		info(data?: any): Promise<ProductSkuEntity>;
+
+		/**
+		 * 列表查询
+		 */
+		list(data?: any): Promise<ProductSkuEntity[]>;
+
+		/**
+		 * 分页查询
+		 */
+		page(data?: any): Promise<ProductSkuPageResponse>;
+
+		/**
+		 * 新增SKU
+		 */
+		add(data?: any): Promise<any>;
+
+		/**
+		 * 权限标识
+		 */
+		permission: {
+			updateStatus: string;
+			updateStock: string;
+			checkStock: string;
+			batchAdd: string;
+			product: string;
+			inStock: string;
+			detail: string;
+			update: string;
+			delete: string;
+			info: string;
+			list: string;
+			page: string;
+			add: string;
+		};
+
+		/**
+		 * 权限状态
+		 */
+		_permission: {
+			updateStatus: boolean;
+			updateStock: boolean;
+			checkStock: boolean;
+			batchAdd: boolean;
+			product: boolean;
+			inStock: boolean;
+			detail: boolean;
+			update: boolean;
+			delete: boolean;
 			info: boolean;
 			list: boolean;
 			page: boolean;
@@ -2749,6 +3160,8 @@ declare namespace Eps {
 
 	type Request = (options: RequestOptions) => Promise<any>;
 
+	type DictKey = "brand" | "occupation";
+
 	type Service = {
 		request: Request;
 
@@ -2768,8 +3181,8 @@ declare namespace Eps {
 		demo: { goods: DemoGoods; tenant: DemoTenant };
 		dict: { info: DictInfo; type: DictType };
 		email: { email: EmailEmail; emailTemplate: EmailEmailTemplate };
-		minio: { file: MinioFile };
 		plugin: { info: PluginInfo };
+		product: { category: ProductCategory; info: ProductInfo; sku: ProductSku };
 		recycle: { data: RecycleData };
 		space: { info: SpaceInfo; type: SpaceType };
 		task: { info: TaskInfo };
